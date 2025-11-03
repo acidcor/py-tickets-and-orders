@@ -85,6 +85,9 @@ class Ticket(models.Model):
         on_delete=models.CASCADE
     )
 
+    row = models.IntegerField()
+    seat = models.IntegerField()
+
     class Meta:
         constraints = [
             models.UniqueConstraint(
@@ -92,9 +95,6 @@ class Ticket(models.Model):
                 name="unique_ticket"
             )
         ]
-
-    row = models.IntegerField()
-    seat = models.IntegerField()
 
     def __str__(self) -> str:
         return (f"{self.movie_session.movie.title} "
